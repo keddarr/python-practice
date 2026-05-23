@@ -1,0 +1,18 @@
+print("***Grade Calculator (5 Students)***")
+marks = []
+for i in range (5):
+    mark = float(input(f"Enter marks of Student {i+1} : "))
+    marks.append(mark)
+print("Marks List : ", marks)
+for i in range(len(marks)):
+    if (marks[i]) > 90 :
+        print(f"Student {i+1} has scored an A Grade.")
+    elif (marks[i]) > 75 :
+        print(f"Student {i+1} has scored an B Grade.")
+    elif (marks[i]) > 50 :
+        print(f"Student {i+1} has scored an C Grade.")
+    elif (marks[i]) > 33 :
+        print(f"Student {i+1} has scored an D Grade.")
+    else : 
+        print(f"Student {i+1} has failed to pass the exam ")
+    
