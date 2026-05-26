@@ -18,4 +18,4 @@ if (len(oddo)) != 0 :
 if (len(eve)) != 0 :
     print(f"The number of even numbers from the list are {len(eve)} and as follows : ", eve)
 if (len(z)) != 0 :
-    print(f"The number of 0's  from the list are {len(z)})
+    print("The number of 0's from the list are : ", len(z))
