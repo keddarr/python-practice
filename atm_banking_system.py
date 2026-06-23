@@ -1,10 +1,13 @@
-balance = 10000
-atmpin = 8686
+account = {
+    "name": "Kedar",
+    "pin": 8686,
+    "balance": 10000
+}
 history = []
 def showbalance():
     s = input("Do you want to view your balance? (YES/NO)")
     if s.lower() =='yes':
-        print(f"Remaining balance : {balance}")
+        print(f"Remaining balance : {account["balance"]}")
 def deposit():
     global balance
     print("You have chose to deposit !")
@@ -20,17 +23,17 @@ def deposit():
 
     if cash <= 0:
         print("Invalid amount")
-    elif cash > balance :
+    elif cash > account["balance"] :
         print("Insuffiecient funds")
 
     else:
         if acc == "886730010731":
-            balance += cash
+            account["balance"] += cash
             print(f"You have successfully deposited {cash} to yourself")
             history.append(f"Deposited {cash}/- ")
             showbalance()
         else:
-            balance -= cash
+            account["balance"] -= cash
             print(f"You have successfully deposited {cash} to {name}")
             history.append(f"Transferred {cash}/- to {name}")
             showbalance()
@@ -52,10 +55,10 @@ def withdraw():
         print("Invalid Amount")
 
     else:
-        if pin == atmpin:
-            balance -= i
+        if pin == account["pin"]:
+            account["balance"] -= i
             print(f"You have successfully withdrawn: {i}.")
-            print(f"Remaining balance : {balance}")
+            print(f"Remaining balance : {account["balance"]}")
             history.append(f"Withdrew {i}/-")
             
 
@@ -66,7 +69,7 @@ def checkbalance() :
 
     pin = int(input("Enter your pin : "))
 
-    if pin == atmpin:
+    if pin == account["pin"]:
         print(f"Your current balance is : {balance}")
 
     else:
