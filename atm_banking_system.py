@@ -1,13 +1,26 @@
-account = {
-    "name": "Kedar",
-    "pin": 8686,
-    "balance": 10000
+accounts = {
+    "kedar" : {
+        "pin" : 8686,
+        "balance" : 10000
+    },"rahul":{
+        "pin" : 3434,
+        "balance" : 5000
+    },
+    "zoya" : {
+        "pin" : 7635,
+        "balance" : 3950
+    }
 }
+username = input("Enter Username : ")
+username = username.lower()
+if username in accounts :
+    print("User Found!")
+
 history = []
 def showbalance():
     s = input("Do you want to view your balance? (YES/NO)")
     if s.lower() =='yes':
-        print(f"Remaining balance : {account["balance"]}")
+        print(f"Remaining balance : {accounts[username]["balance"]}")
 def deposit():
     global balance
     print("You have chose to deposit !")
@@ -23,17 +36,17 @@ def deposit():
 
     if cash <= 0:
         print("Invalid amount")
-    elif cash > account["balance"] :
+    elif cash > accounts[username]["balance"] :
         print("Insuffiecient funds")
 
     else:
         if acc == "886730010731":
-            account["balance"] += cash
+            accounts[username]["balance"] += cash
             print(f"You have successfully deposited {cash} to yourself")
             history.append(f"Deposited {cash}/- ")
             showbalance()
         else:
-            account["balance"] -= cash
+            accounts[username]["balance"] -= cash
             print(f"You have successfully deposited {cash} to {name}")
             history.append(f"Transferred {cash}/- to {name}")
             showbalance()
@@ -55,10 +68,10 @@ def withdraw():
         print("Invalid Amount")
 
     else:
-        if pin == account["pin"]:
-            account["balance"] -= i
+        if pin == accounts[username]["pin"]:
+            account[username]["balance"] -= i
             print(f"You have successfully withdrawn: {i}.")
-            print(f"Remaining balance : {account["balance"]}")
+            print(f"Remaining balance : {accounts[username]["balance"]}")
             history.append(f"Withdrew {i}/-")
             
 
@@ -69,8 +82,8 @@ def checkbalance() :
 
     pin = int(input("Enter your pin : "))
 
-    if pin == account["pin"]:
-        print(f"Your current balance is : {balance}")
+    if pin == accounts[username]["balance"]:
+        print(f"Your current balance is : {accounts[username]["balance"]}")
 
     else:
         print("Invalid pin")
@@ -101,7 +114,7 @@ while True:
     elif a == "4":
         transactionhistory()
     elif a == "5":
-        ask = input("Are you sure you want to exit?\n")
+        ask = input("Are you sure you want to exit?(YES/NO)\n")
         if ask.lower() == "yes":
             break
         elif ask.lower() == "no":
